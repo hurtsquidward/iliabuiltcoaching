@@ -99,6 +99,7 @@
     }
     .program button:hover { background: #3b4a7a; }
 
+    /* Contact section hidden by default */
     #contact {
       display: none;
       text-align: center;
@@ -144,6 +145,11 @@
     #contact p.info {
       margin-top: 1rem;
       font-size: 1rem;
+    }
+    .important {
+      color: red;
+      font-weight: bold;
+      margin-top: 0.5rem;
     }
 
     footer {
@@ -198,11 +204,11 @@
       <label for="programType">Program</label>
       <input type="text" id="programType" name="programType" readonly>
 
-      <label for="name">Your Name</label>
+      <label for="name">Your Full Name</label>
       <input type="text" id="name" name="name" placeholder="Enter your full name" required>
 
-      <label for="email">Your Email</label>
-      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      <label for="phone">Phone Number (for e-Transfer)</label>
+      <input type="tel" id="phone" name="phone" placeholder="e.g. 4165551234" pattern="[0-9]{10}" required>
 
       <label for="goals">Your Goals</label>
       <textarea id="goals" name="goals" rows="4" placeholder="Tell me your main goals" required></textarea>
@@ -210,6 +216,7 @@
       <button type="submit">Submit</button>
     </form>
     <p class="info">After submitting, please e-transfer your program fee to <strong>ilia.nazari2023@gmail.com</strong>.</p>
+    <p class="important">Important: Include your full name and phone number in the message when sending the e-Transfer.</p>
   </section>
 
   <footer>
@@ -228,7 +235,7 @@
       e.preventDefault();
       const programType = document.getElementById('programType').value;
       const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
       const goals = document.getElementById('goals').value;
 
       // Send email via your backend endpoint
@@ -241,7 +248,7 @@
             subject: `New Signup: ${programType}`,
             programType,
             name,
-            email,
+            phone,
             goals
           })
         });
@@ -249,7 +256,7 @@
         console.error('Email send failed', err);
       }
 
-      alert(`Thanks, ${name}! We\'ll be in touch soon about your ${programType} program.`);
+      alert(`Thanks, ${name}! We\u2019ll be in touch soon about your ${programType} program.`);
       this.reset();
       document.getElementById('contact').classList.remove('active');
     });
