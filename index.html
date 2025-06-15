@@ -201,15 +201,15 @@
       <label for="name">Your Name</label>
       <input type="text" id="name" name="name" placeholder="Enter your full name" required>
 
-      <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+      <label for="email">Your Email</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
       <label for="goals">Your Goals</label>
       <textarea id="goals" name="goals" rows="4" placeholder="Tell me your main goals" required></textarea>
 
       <button type="submit">Submit</button>
     </form>
-    <p class="info">After submitting, send e-transfer of the program fee to <strong>416-717-8175</strong> with your full name in the message.</p>
+    <p class="info">After submitting, please e-transfer your program fee to <strong>ilia.nazari2023@gmail.com</strong>.</p>
   </section>
 
   <footer>
@@ -228,24 +228,25 @@
       e.preventDefault();
       const programType = document.getElementById('programType').value;
       const name = document.getElementById('name').value;
-      const phone = document.getElementById('phone').value;
+      const email = document.getElementById('email').value;
       const goals = document.getElementById('goals').value;
 
-      // Send SMS via your backend endpoint (e.g., a serverless function)
+      // Send email via your backend endpoint
       try {
-        await fetch('https://your-backend.example.com/sendSms', {
+        await fetch('https://your-backend.example.com/sendEmail', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            to: '4167178175',
+            to: 'ilia.nazari2023@gmail.com',
+            subject: `New Signup: ${programType}`,
             programType,
             name,
-            phone,
+            email,
             goals
           })
         });
       } catch (err) {
-        console.error('SMS send failed', err);
+        console.error('Email send failed', err);
       }
 
       alert(`Thanks, ${name}! We\'ll be in touch soon about your ${programType} program.`);
@@ -255,4 +256,3 @@
   </script>
 </body>
 </html>
-
