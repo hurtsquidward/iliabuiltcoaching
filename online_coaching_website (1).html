@@ -201,6 +201,9 @@
       <label for="name">Your Name</label>
       <input type="text" id="name" name="name" placeholder="Enter your full name" required>
 
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
       <label for="goals">Your Goals</label>
       <textarea id="goals" name="goals" rows="4" placeholder="Tell me your main goals" required></textarea>
 
@@ -214,19 +217,41 @@
   </footer>
 
   <script>
-    function showForm(type) {
+    async function showForm(type) {
       document.getElementById('signupForm').reset();
       document.getElementById('programType').value = type;
       document.getElementById('contact').classList.add('active');
       window.scrollTo({ top: document.getElementById('contact').offsetTop, behavior: 'smooth' });
     }
-    document.getElementById('signupForm').addEventListener('submit', function(e) {
+
+    document.getElementById('signupForm').addEventListener('submit', async function(e) {
       e.preventDefault();
-      alert('Thanks, ' + document.getElementById('name').value + '! We\'ll be in touch soon about your ' + document.getElementById('programType').value + ' program.');
+      const programType = document.getElementById('programType').value;
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const goals = document.getElementById('goals').value;
+
+      // Send SMS via your backend endpoint (e.g., a serverless function)
+      try {
+        await fetch('https://your-backend.example.com/sendSms', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            to: '4167178175',
+            programType,
+            name,
+            phone,
+            goals
+          })
+        });
+      } catch (err) {
+        console.error('SMS send failed', err);
+      }
+
+      alert(`Thanks, ${name}! We\'ll be in touch soon about your ${programType} program.`);
       this.reset();
       document.getElementById('contact').classList.remove('active');
     });
   </script>
 </body>
 </html>
-
