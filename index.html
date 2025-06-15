@@ -3,20 +3,229 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ilia Built Coaching</title>
+  <title>Ilia Built Coaching - Online Training Programs</title>
+  <style>
+    :root {
+      --primary: #1e1e2f;
+      --accent:  #4e5d94;
+      --light:   #f4f4f9;
+      --text:    #333;
+      --white:   #fff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text);
+      background: var(--light);
+    }
+    header { 
+      background: var(--primary);
+      color: var(--white);
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+    header h1 { font-size: 2.75rem; letter-spacing: 1px; }
+    header p  { font-size: 1.25rem; margin-top: 0.5rem; }
+
+    #readme {
+      background: var(--white);
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    #readme h2 { 
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    #readme p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    #programs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      padding: 4rem 1rem;
+    }
+    .program {
+      background: var(--white);
+      border-radius: 12px;
+      width: 320px;
+      padding: 2rem;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .program:hover { transform: translateY(-8px); }
+    .program h2 { 
+      font-size: 1.75rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    .program p.price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 0.75rem 0;
+    }
+    .program ul {
+      list-style: none;
+      text-align: left;
+      margin: 1rem 0;
+    }
+    .program ul li {
+      margin-bottom: 0.75rem;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .program ul li::before {
+      content: '✔';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+    .program button {
+      background: var(--accent);
+      color: var(--white);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-top: 1rem;
+    }
+    .program button:hover { background: #3b4a7a; }
+
+    #contact {
+      display: none;
+      text-align: center;
+      padding: 3rem 1rem;
+      background: var(--white);
+      border-top: 4px solid var(--accent);
+    }
+    #contact.active { display: block; }
+    #contact h2 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    #contact form {
+      max-width: 400px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    #contact label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+    #contact input,
+    #contact textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+    #contact button {
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1rem;
+    }
+    #contact p.info {
+      margin-top: 1rem;
+      font-size: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: var(--primary);
+      color: var(--white);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 640px) {
+      #programs { flex-direction: column; align-items: center; }
+    }
+  </style>
 </head>
 <body>
   <header>
-    <h1>Welcome to Ilia Built Coaching</h1>
+    <h1>Ilia Built Coaching</h1>
+    <p>Transform Your Body, Transform Your Life</p>
   </header>
 
-  <main>
-    <p>Coming soon: personalized training programs, nutrition guidance, and 24/7 support.</p>
-  </main>
+  <section id="readme">
+    <h2>About Ilia Nazari</h2>
+    <p>Hi, I’m Ilia Nazari—a dedicated ISSA-certified personal trainer with CPR & AED certifications, and an IKF Don 2 black belt in kickboxing. With years of hands-on experience coaching clients from all walks of life, I blend science-backed training methods with real-world fighting discipline. My passion is helping you conquer your goals, whether it’s sculpting a championship physique or mastering functional fitness. Let’s team up and unleash your inner champion!</p>
+  </section>
+
+  <section id="programs">
+    <div class="program">
+      <h2>Elite Training Program</h2>
+      <p class="price">6 Weeks — $80</p>
+      <ul>
+        <li>24/7 Support</li>
+        <li>Regular Progress Checks</li>
+        <li>Custom Workout Plan</li>
+        <li>Nutrition Guidance</li>
+      </ul>
+      <button onclick="showForm('Elite')">Sign Up Now</button>
+    </div>
+    <div class="program">
+      <h2>Basic Training Program</h2>
+      <p class="price">4 Weeks — $50</p>
+      <ul>
+        <li>Customized Training Program</li>
+      </ul>
+      <button onclick="showForm('Basic')">Sign Up Now</button>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Sign Up</h2>
+    <form id="signupForm">
+      <label for="programType">Program</label>
+      <input type="text" id="programType" name="programType" readonly>
+
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+      <label for="goals">Your Goals</label>
+      <textarea id="goals" name="goals" rows="4" placeholder="Tell me your main goals" required></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+    <p class="info">After submitting, send e-transfer of the program fee to <strong>416-717-8175</strong> with your full name in the message.</p>
+  </section>
 
   <footer>
     <p>© 2025 Ilia Built Coaching</p>
   </footer>
+
+  <script>
+    function showForm(type) {
+      document.getElementById('signupForm').reset();
+      document.getElementById('programType').value = type;
+      document.getElementById('contact').classList.add('active');
+      window.scrollTo({ top: document.getElementById('contact').offsetTop, behavior: 'smooth' });
+    }
+    document.getElementById('signupForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thanks, ' + document.getElementById('name').value + '! We\'ll be in touch soon about your ' + document.getElementById('programType').value + ' program.');
+      this.reset();
+      document.getElementById('contact').classList.remove('active');
+    });
+  </script>
 </body>
 </html>
-
