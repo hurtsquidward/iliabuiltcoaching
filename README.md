@@ -186,7 +186,7 @@
   <section id="programs">
     <div class="program">
       <h2>Elite Training Program</h2>
-      <p class="price">6 Weeks — $80</p>
+      <p class="price">8 Weeks — $80</p>
       <ul>
         <li>24/7 Support</li>
         <li>Regular Progress Checks</li>
@@ -269,3 +269,4 @@
   </script>
 </body>
 </html>
+
