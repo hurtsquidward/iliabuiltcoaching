@@ -27,21 +27,28 @@
     header h1 { font-size: 2.75rem; letter-spacing: 1px; }
     header p  { font-size: 1.25rem; margin-top: 0.5rem; }
 
+    /* Enhanced About Section */
     #readme {
       background: var(--white);
-      padding: 2rem 1rem;
+      padding: 2.5rem 1rem;
       text-align: center;
+      border-left: 6px solid var(--accent);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      margin: 2rem 1rem;
     }
     #readme h2 { 
-      font-size: 2rem;
+      font-size: 2.2rem;
       color: var(--primary);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: 1px;
     }
     #readme p {
       max-width: 700px;
-      margin: 0 auto;
-      font-size: 1.1rem;
+      margin: 1rem auto;
+      font-size: 1.15rem;
       line-height: 1.6;
+      font-style: italic;
+      color: #444;
     }
 
     #programs {
@@ -173,7 +180,7 @@
 
   <section id="readme">
     <h2>About Ilia Nazari</h2>
-    <p>Hi, I’m Ilia Nazari—a dedicated ISSA-certified personal trainer with CPR & AED certifications, and an IKF Don 2 black belt in kickboxing. With years of hands-on experience coaching clients from all walks of life, I blend science-backed training methods with real-world fighting discipline. My passion is helping you conquer your goals, whether it’s sculpting a championship physique or mastering functional fitness. Let’s team up and unleash your inner champion!</p>
+    <p>Hi, I’m Ilia Nazari—an ISSA-certified personal trainer with CPR & AED certifications and an IKF Don 2 black belt in kickboxing. With years of hands-on coaching experience, I combine evidence-based training techniques and combat discipline to push you beyond your limits. My mission is to help you escape average, redefine your potential, and embrace a stronger, healthier you. Ready to break free from the ordinary?</p>
   </section>
 
   <section id="programs">
@@ -238,7 +245,6 @@
       const phone = document.getElementById('phone').value;
       const goals = document.getElementById('goals').value;
 
-      // Send email via your backend endpoint
       try {
         await fetch('https://your-backend.example.com/sendEmail', {
           method: 'POST',
@@ -256,11 +262,10 @@
         console.error('Email send failed', err);
       }
 
-      alert(`Thanks, ${name}! We\u2019ll be in touch soon about your ${programType} program.`);
+      alert(`Thanks, ${name}! We’ll be in touch soon about your ${programType} program.`);
       this.reset();
       document.getElementById('contact').classList.remove('active');
     });
   </script>
 </body>
 </html>
-
